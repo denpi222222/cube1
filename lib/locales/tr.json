@@ -1,0 +1,102 @@
+{
+  "home": {
+    "title": "CrazyCube",
+    "subtitle": "Küplerin ağladığı ve şaka yaptığı yer!",
+    "balance": "Bakiye:",
+    "connectWallet": "MetaMask'ı Bağla",
+    "walletNotDetected": "MetaMask algılanmadı. MetaMask'ı Yükle"
+  },
+  "sections": {
+    "bridge": {
+      "title": "Köprü (Küpü Geri Getir!)",
+      "description": "Küpler mezarlıktan dönüyor — rastgele bir NFT \"Ben özgürüm!\" diye bağırarak fırlıyor",
+      "button": "NFT Köprüsü"
+    },
+    "burn": {
+      "title": "NFT Yak (Küpü Kızart!)",
+      "description": "NFT'yi yak ve CRA token'ları kazan! \"Anneme onu sevdiğimi söyleyin!\" diye bağırarak ateşli ızgaraya uçan NFT'lerin destansı sahnesi",
+      "button": "NFT Yak"
+    },
+    "claim": {
+      "title": "Ödülleri Talep Et (CRA'larım Nerede?)",
+      "description": "Kocaman üzgün gözleri olan bir küp bağırıyor: \"Beni talep et ve CRA'larını al!\"",
+      "button": "Ödül Talep Et"
+    },
+    "stats": {
+      "title": "İstatistikler (Ağlama ve Acı Sayacı)",
+      "description": "Kaç NFT'nin yakıldığını, mezarlıktan döndüğünü ve havuzda kaç CRA coin olduğunu gösterir",
+      "button": "İstatistikleri Görüntüle"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CrazyCube — Küplerin ağladığı ve şaka yaptığı yer!",
+    "crashMessage": "Site çöktüyse, küp pizza almaya çıktı"
+  },
+  "construction": {
+    "title": "YAPIM AŞAMASINDA",
+    "message": "Bu bölüm şu anda geliştirme aşamasındadır. Yakında burada çok ilginç şeyler olacak!",
+    "returnHome": "Ana Sayfaya Dön",
+    "phrases": [
+      "Burada çalışıyorum! Rahatsız etme!",
+      "Yakında geliyor, baret takıyorum!",
+      "İnşaat devam ediyor!",
+      "Küp inşaat alanında, daha sonra gel!",
+      "Burası güzel olacak, söz veriyorum!",
+      "Ups, erken geldin! Henüz bitirmedik!",
+      "Küp inşa ediyor, küp boyuyor, küp yoruldu..."
+    ]
+  },
+  "wallet": {
+    "connect": "Bağlan",
+    "connecting": "Bağlanıyor...",
+    "copyAddress": "Adresi Kopyala",
+    "copied": "Kopyalandı!",
+    "openExplorer": "Gezginde Aç",
+    "disconnect": "Cüzdanı Ayır",
+    "balance": "Bakiye:"
+  },
+  "cubeAnimation": {
+    "loading": "Yükleniyor...",
+    "loadingMessage": "Eyvah, site takıldı! Bekle, biz sadece tembeliz 🦥",
+    "speechBubbles": [
+      "Boşver, ayakta durmaktan yoruldum! 🥱",
+      "Hey, herkes nereye gitti?! 😱",
+      "Ben de gidiyorum! 👋",
+      "Pizza almaya gidiyorum! 🍕",
+      "Manikür zamanı! 💅"
+    ],
+    "partyBubble": "Yaşasın! Herkes gitti! Parti zamanı! 🎵🎉",
+    "whereIsEveryone": "Hey, herkes nereye gitti?! 😱",
+    "waitingForMusicPhrases": [
+      "Hey, müziği aç! 🎵",
+      "Müzik olmadan sıkıcı... 😴",
+      "Dans etmek istiyorum! Müzik lazım! 💃",
+      "Birisi, düğmeye bassın! 👆"
+    ],
+    "partyPhrases": [
+      "Bütün gece dans! 🕺",
+      "Parti daha yeni başlıyor! 🎉",
+      "Kim demiş küpler parti yapamaz diye? 🎵",
+      "Müziği yükselt! 🔊",
+      "Bu partinin kralı benim! 👑",
+      "Kimse benden daha iyi dans edemez! 💃",
+      "Bu benim favori parçam! 🎧",
+      "DJ, sesi aç! 🎚️",
+      "Küpler evde! 🏠",
+      "Şafağa kadar parti! 🌅"
+    ],
+    "musicOn": "Müziği Kapat",
+    "musicOff": "Müziği Aç"
+  },
+  "social": {
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "followUs": "Bizi takip edin"
+  },
+  "tabs": {
+    "bridge": "Köprü",
+    "burn": "Yak",
+    "claim": "Talep Et",
+    "stats": "İstatistik"
+  }
+}

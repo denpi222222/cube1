@@ -1,0 +1,102 @@
+{
+  "home": {
+    "title": "CrazyCube",
+    "subtitle": "Where cubes cry and joke!",
+    "balance": "Balance:",
+    "connectWallet": "Connect MetaMask",
+    "walletNotDetected": "MetaMask not detected. Install MetaMask"
+  },
+  "sections": {
+    "bridge": {
+      "title": "Bridge (Bring Back Cube!)",
+      "description": "Cubes return from the graveyard — a random NFT jumps out shouting \"I'm free!\"",
+      "button": "Bridge NFT"
+    },
+    "burn": {
+      "title": "Burn NFT (Roast the Cube!)",
+      "description": "Burn NFT and get CRA tokens! Epic scene of a fiery grill with NFTs flying in screaming: \"Tell my mom I love her!\"",
+      "button": "Burn NFT"
+    },
+    "claim": {
+      "title": "Claim Rewards (Where's my CRA?)",
+      "description": "A cube with huge sad eyes shouts: \"Claim me and get your CRA!\"",
+      "button": "Claim Reward"
+    },
+    "stats": {
+      "title": "Statistics (Crying and Pain Counter)",
+      "description": "Shows how many NFTs were burned, returned from the graveyard, and how many CRA coins are in the pool",
+      "button": "View Statistics"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CrazyCube — Where cubes cry and joke!",
+    "crashMessage": "If the site crashed, the cube went out for pizza"
+  },
+  "construction": {
+    "title": "UNDER CONSTRUCTION",
+    "message": "This section is currently under development. There will be lots of interesting things here soon!",
+    "returnHome": "Return to Home",
+    "phrases": [
+      "I'm working here! Don't disturb!",
+      "Coming soon, I'm wearing a hard hat!",
+      "Construction in progress!",
+      "Cube at the construction site, come back later!",
+      "It'll be beautiful here, I promise!",
+      "Oops, you're early! We're not finished yet!",
+      "Cube builds, cube paints, cube is tired..."
+    ]
+  },
+  "wallet": {
+    "connect": "Connect",
+    "connecting": "Connecting...",
+    "copyAddress": "Copy Address",
+    "copied": "Copied!",
+    "openExplorer": "Open in Explorer",
+    "disconnect": "Disconnect Wallet",
+    "balance": "Balance:"
+  },
+  "cubeAnimation": {
+    "loading": "Loading...",
+    "loadingMessage": "Oh no, the site is stuck! Wait, we're just lazy 🦥",
+    "speechBubbles": [
+      "Forget it, tired of standing!",
+      "Hey, where did everyone go?!",
+      "I'm leaving too!",
+      "Going to get pizza!",
+      "Where's my party hat?"
+    ],
+    "partyBubble": "Hooray! Everyone's gone! Time to party! 🎵🎉",
+    "whereIsEveryone": "Hey, where did everyone go?! 😱",
+    "waitingForMusicPhrases": [
+      "Hey, turn on the music! 🎵",
+      "Boring without music... 😴",
+      "I want to dance! Need music! 💃",
+      "Someone, press the button! 👆"
+    ],
+    "partyPhrases": [
+      "Dancing all night! 🕺",
+      "The party's just getting started! 🎉",
+      "Who said cubes can't party? 🎵",
+      "Turn up the music! 🔊",
+      "I'm the king of this party! 👑",
+      "Nobody dances better than me! 💃",
+      "This is my favorite track! 🎧",
+      "DJ, turn it up! 🎚️",
+      "Cubes in the house! 🏠",
+      "Party till dawn! 🌅"
+    ],
+    "musicOn": "Turn Off Music",
+    "musicOff": "Turn On Music"
+  },
+  "social": {
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "followUs": "Follow us"
+  },
+  "tabs": {
+    "bridge": "Bridge",
+    "burn": "Burn",
+    "claim": "Claim",
+    "stats": "Stats"
+  }
+}

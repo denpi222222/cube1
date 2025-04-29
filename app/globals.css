@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 196 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 196 100% 50%;
+    --radius: 0.75rem;
+
+    /* Chart colors */
+    --chart-1: 196 100% 50%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 187 100% 42%;
+    --chart-5: 168 83% 41%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 196 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 196 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Adding styles for NFT project */
+.ape-border {
+  @apply border-2 border-cyan-400/70 shadow-lg shadow-cyan-400/30;
+}
+
+.ape-glow {
+  @apply shadow-lg shadow-cyan-400/30;
+}
+
+.ape-text {
+  @apply font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500;
+}
+
+.ape-button {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold;
+}
+
+.ape-card {
+  @apply bg-gradient-to-br from-slate-900/90 to-slate-800/90 border-2 border-cyan-500/50 backdrop-blur-sm;
+}
+
+/* Add these mobile optimizations at the end of the file */
+
+@layer utilities {
+  /* Hide scrollbar but allow scrolling */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Mobile touch optimizations */
+  @media (max-width: 768px) {
+    /* Increase touch target sizes */
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Optimize font sizes for mobile */
+    .text-mobile-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .text-mobile-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
+    .text-mobile-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .text-mobile-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+
+    /* Reduce animation intensity on mobile */
+    .reduce-motion {
+      animation-duration: 50% !important;
+      transition-duration: 50% !important;
+    }
+
+    /* Optimize padding and margins for mobile */
+    .p-mobile {
+      padding: 0.75rem;
+    }
+
+    .m-mobile {
+      margin: 0.75rem;
+    }
+
+    .gap-mobile {
+      gap: 0.5rem;
+    }
+  }
+
+  /* Add smooth scrolling for better mobile experience */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent content from being hidden under fixed headers on mobile */
+  .scroll-margin-top {
+    scroll-margin-top: 4rem;
+  }
+}
+
+/* Add optimizations for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

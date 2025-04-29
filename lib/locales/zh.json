@@ -1,0 +1,102 @@
+{
+  "home": {
+    "title": "CrazyCube",
+    "subtitle": "方块哭泣和开玩笑的地方！",
+    "balance": "余额：",
+    "connectWallet": "连接 MetaMask",
+    "walletNotDetected": "未检测到 MetaMask。安装 MetaMask"
+  },
+  "sections": {
+    "bridge": {
+      "title": "桥接（带回方块！）",
+      "description": "方块从墓地返回 — 一个随机的 NFT 跳出来喊着\"我自由了！\"",
+      "button": "桥接 NFT"
+    },
+    "burn": {
+      "title": "销毁 NFT（烤方块！）",
+      "description": "销毁 NFT 并获得 CRA 代币！壮观的场景：NFT 飞向火热的烤架，尖叫着:\"告诉我妈妈我爱她！\"",
+      "button": "销毁 NFT"
+    },
+    "claim": {
+      "title": "领取奖励（我的 CRA 在哪里？）",
+      "description": "一个有着巨大悲伤眼睛的方块喊道:\"领取我并获得你的 CRA！\"",
+      "button": "领取奖励"
+    },
+    "stats": {
+      "title": "统计（哭泣和痛苦计数器）",
+      "description": "显示有多少 NFT 被销毁，从墓地返回，以及池中有多少 CRA 代币",
+      "button": "查看统计"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CrazyCube — 方块哭泣和开玩笑的地方！",
+    "crashMessage": "如果网站崩溃了，方块出去买披萨了"
+  },
+  "construction": {
+    "title": "正在建设中",
+    "message": "此部分正在开发中。很快这里将会有很多有趣的内容！",
+    "returnHome": "返回首页",
+    "phrases": [
+      "我在这里工作！请勿打扰！",
+      "即将推出，我正戴着安全帽！",
+      "建设正在进行中！",
+      "方块在建筑工地，稍后再来！",
+      "这里会很漂亮，我保证！",
+      "哎呀，你来早了！我们还没完成！",
+      "方块建造，方块绘画，方块累了..."
+    ]
+  },
+  "wallet": {
+    "connect": "连接",
+    "connecting": "连接中...",
+    "copyAddress": "复制地址",
+    "copied": "已复制！",
+    "openExplorer": "在浏览器中打开",
+    "disconnect": "断开钱包连接",
+    "balance": "余额："
+  },
+  "cubeAnimation": {
+    "loading": "加载中...",
+    "loadingMessage": "哦不，网站卡住了！等等，我们只是懒惰 🦥",
+    "speechBubbles": [
+      "算了，站累了！🥱",
+      "嘿，大家都去哪了？！😱",
+      "我也要走了！👋",
+      "去买披萨！🍕",
+      "是时候做美甲了！💅"
+    ],
+    "partyBubble": "耶！大家都走了！是时候开派对了！🎵🎉",
+    "whereIsEveryone": "嘿，大家都去哪了？！😱",
+    "waitingForMusicPhrases": [
+      "嘿，打开音乐！🎵",
+      "没有音乐很无聊... 😴",
+      "我想跳舞！需要音乐！💃",
+      "有人，按下按钮！👆"
+    ],
+    "partyPhrases": [
+      "整晚跳舞！🕺",
+      "派对才刚刚开始！🎉",
+      "谁说方块不能派对？🎵",
+      "音乐开大点！🔊",
+      "我是派对之王！👑",
+      "没人跳舞比我好！💃",
+      "这是我最喜欢的曲子！🎧",
+      "DJ，把音量调大！🎚️",
+      "方块在屋里！🏠",
+      "派对到天亮！🌅"
+    ],
+    "musicOn": "关闭音乐",
+    "musicOff": "打开音乐"
+  },
+  "social": {
+    "telegram": "电报",
+    "discord": "Discord",
+    "followUs": "关注我们"
+  },
+  "tabs": {
+    "bridge": "桥接",
+    "burn": "销毁",
+    "claim": "奖励",
+    "stats": "统计"
+  }
+}

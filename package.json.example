@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "validate-jsx": "ts-node scripts/validate-jsx.ts",
+    "predeploy": "npm run validate-jsx"
+  }
+}

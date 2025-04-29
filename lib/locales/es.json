@@ -1,0 +1,102 @@
+{
+  "home": {
+    "title": "CrazyCube",
+    "subtitle": "¡Donde los cubos lloran y bromean!",
+    "balance": "Saldo:",
+    "connectWallet": "Conectar MetaMask",
+    "walletNotDetected": "MetaMask no detectado. Instalar MetaMask"
+  },
+  "sections": {
+    "bridge": {
+      "title": "Puente (¡Trae de vuelta el cubo!)",
+      "description": "Los cubos regresan del cementerio — un NFT aleatorio salta gritando \"¡Soy libre!\"",
+      "button": "Puente NFT"
+    },
+    "burn": {
+      "title": "Quemar NFT (¡Asar el cubo!)",
+      "description": "¡Quema NFT y obtén tokens CRA! Escena épica de una parrilla ardiente con NFTs volando y gritando: \"¡Díganle a mi mamá que la amo!\"",
+      "button": "Quemar NFT"
+    },
+    "claim": {
+      "title": "Reclamar Recompensas (¿Dónde está mi CRA?)",
+      "description": "Un cubo con enormes ojos tristes grita: \"¡Reclámame y obtén tu CRA!\"",
+      "button": "Reclamar Recompensa"
+    },
+    "stats": {
+      "title": "Estadísticas (Contador de Llanto y Dolor)",
+      "description": "Muestra cuántos NFTs fueron quemados, regresaron del cementerio, y cuántas monedas CRA hay en el pool",
+      "button": "Ver Estadísticas"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CrazyCube — ¡Donde los cubos lloran y bromean!",
+    "crashMessage": "Si el sitio se cayó, el cubo salió por pizza"
+  },
+  "construction": {
+    "title": "EN CONSTRUCCIÓN",
+    "message": "Esta sección está actualmente en desarrollo. ¡Pronto habrá muchas cosas interesantes aquí!",
+    "returnHome": "Volver al Inicio",
+    "phrases": [
+      "¡Estoy trabajando aquí! ¡No molestes!",
+      "¡Próximamente, estoy usando un casco de seguridad!",
+      "¡Construcción en progreso!",
+      "¡Cubo en el sitio de construcción, vuelve más tarde!",
+      "¡Será hermoso aquí, lo prometo!",
+      "¡Ups, llegaste temprano! ¡Aún no hemos terminado!",
+      "Cubo construye, cubo pinta, cubo está cansado..."
+    ]
+  },
+  "wallet": {
+    "connect": "Conectar",
+    "connecting": "Conectando...",
+    "copyAddress": "Copiar Dirección",
+    "copied": "¡Copiado!",
+    "openExplorer": "Abrir en Explorador",
+    "disconnect": "Desconectar Billetera",
+    "balance": "Saldo:"
+  },
+  "cubeAnimation": {
+    "loading": "Cargando...",
+    "loadingMessage": "¡Oh no, el sitio está atascado! Espera, solo somos perezosos 🦥",
+    "speechBubbles": [
+      "¡Olvídalo, cansado de estar de pie! 🥱",
+      "¡Oye, ¿a dónde se fueron todos?! 😱",
+      "¡Yo también me voy! 👋",
+      "¡Voy por pizza! 🍕",
+      "¡Hora de mi manicura! 💅"
+    ],
+    "partyBubble": "¡Hurra! ¡Todos se han ido! ¡Hora de fiesta! 🎵🎉",
+    "whereIsEveryone": "¡Oye, ¿a dónde se fueron todos?! 😱",
+    "waitingForMusicPhrases": [
+      "¡Oye, enciende la música! 🎵",
+      "Aburrido sin música... 😴",
+      "¡Quiero bailar! ¡Necesito música! 💃",
+      "¡Alguien, presiona el botón! 👆"
+    ],
+    "partyPhrases": [
+      "¡Bailando toda la noche! 🕺",
+      "¡La fiesta apenas comienza! 🎉",
+      "¿Quién dijo que los cubos no pueden festejar? 🎵",
+      "¡Sube la música! 🔊",
+      "¡Soy el rey de esta fiesta! 👑",
+      "¡Nadie baila mejor que yo! 💃",
+      "¡Esta es mi canción favorita! 🎧",
+      "¡DJ, súbele! 🎚️",
+      "¡Cubos en la casa! 🏠",
+      "¡Fiesta hasta el amanecer! 🌅"
+    ],
+    "musicOn": "Apagar Música",
+    "musicOff": "Encender Música"
+  },
+  "social": {
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "followUs": "Síguenos"
+  },
+  "tabs": {
+    "bridge": "Puente",
+    "burn": "Quemar",
+    "claim": "Reclamar",
+    "stats": "Estadísticas"
+  }
+}
