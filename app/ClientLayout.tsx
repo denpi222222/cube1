@@ -11,6 +11,8 @@ import { ErrorBoundary } from "@/components/error-boundary"
 import { useEffect } from "react"
 // Import i18n
 import "@/lib/i18n"
+// Import Web3 provider
+import { Web3Provider } from "@/contexts/web3-context"
 
 // Initialize global error handling on client
 const initGlobalErrorHandling = () => {
@@ -44,8 +46,8 @@ export default function ClientLayout({
   }, [])
 
   return (
-    <>
-      <ThemeProvider attribute="class" defaultTheme="dark">
+    <ThemeProvider attribute="class" defaultTheme="dark">
+      <Web3Provider>
         <ErrorBoundary>
           <div className={inter.className}>
             {children}
@@ -59,7 +61,7 @@ export default function ClientLayout({
             />
           </div>
         </ErrorBoundary>
-      </ThemeProvider>
-    </>
+      </Web3Provider>
+    </ThemeProvider>
   )
 }

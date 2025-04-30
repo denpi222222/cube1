@@ -63,11 +63,14 @@
     "i18next": "latest",
     "immer": "latest",
     "use-sync-external-store": "latest",
+    "@tanstack/react-query": "latest",
+    "viem": "latest",
     "@stripe/react-stripe-js": "latest",
     "framer-motion": "latest",
     "react-i18next": "latest",
     "zustand": "latest",
-    "i18next-browser-languagedetector": "latest"
+    "i18next-browser-languagedetector": "latest",
+    "wagmi": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
