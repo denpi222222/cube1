@@ -1,18 +1,37 @@
 "use client"
+
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { ParticleEffect } from "@/components/particle-effect"
 import { useMobile } from "@/hooks/use-mobile"
 import { useTranslation } from "react-i18next"
+import { TabNavigation } from "@/components/tab-navigation"
 import { WalletConnect } from "@/components/web3/wallet-connect"
+import { StatsGrid } from "@/components/web3/stats-grid"
 import { NFTGrid } from "@/components/web3/nft-grid"
-import { useWeb3 } from "@/contexts/web3-context"
+import { ActivityChart } from "@/components/web3/activity-chart"
+import { DistributionChart } from "@/components/web3/distribution-chart"
+import { RewardsChart } from "@/components/web3/rewards-chart"
+import { useWeb3 } from "@/hooks/useWeb3"
 
 export default function StatsPage() {
-  const { t } = useTranslation()
-  const { isConnected } = useWeb3()
+  const { isClient, isConnected } = useWeb3()
   const isMobile = useMobile()
+  const { t } = useTranslation()
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Имитируем загрузку страницы
+  useEffect(() => {
+    if (isClient) {
+      const timer = setTimeout(() => {
+        setIsLoading(false)
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [isClient])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-900 via-indigo-900 to-violet-900 p-4">
@@ -34,7 +53,7 @@ export default function StatsPage() {
               </Button>
             </Link>
             <h1 className="ml-4 text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-300">
-              {t("sections.stats.title", "Статистика")}
+              {t("sections.stats.title")}
             </h1>
           </div>
           <div>
@@ -42,21 +61,46 @@ export default function StatsPage() {
           </div>
         </header>
 
-        <div className="container mx-auto py-8">
-          <div className="flex flex-col gap-8">
-            <div className="flex justify-between items-center">
-              <h1 className="text-3xl font-bold text-white">Мои NFT</h1>
-            </div>
+        {/* Add tab navigation */}
+        <TabNavigation />
 
-            {!isConnected ? (
-              <div className="bg-blue-900/30 border-l-4 border-blue-500 text-blue-100 p-4 rounded">
-                <p className="font-bold">Подключите кошелек</p>
-                <p>Для просмотра ваших NFT необходимо подключить кошелек MetaMask.</p>
-              </div>
-            ) : (
-              <NFTGrid />
-            )}
-          </div>
+        {/* Main content */}
+        <div className="space-y-8 mt-8">
+          {/* Stats Grid */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <StatsGrid />
+          </motion.div>
+
+          {/* Charts Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h2 className="text-xl font-bold text-slate-200 mb-4">Analytics</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <ActivityChart />
+              <DistributionChart />
+              <RewardsChart />
+            </div>
+          </motion.div>
+
+          {/* Your NFTs Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-slate-200">Your NFTs</h2>
+              <Link href="/bridge">
+                <Button variant="outline" className="border-pink-500/30 bg-black/20 text-pink-300 hover:bg-black/40">
+                  Bridge NFT
+                </Button>
+              </Link>
+            </div>
+            <NFTGrid maxDisplay={4} />
+          </motion.div>
         </div>
       </div>
     </div>

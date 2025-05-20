@@ -1,61 +1,114 @@
 "use client"
 
-import { useWeb3 } from "@/contexts/web3-context"
+import { useState } from "react"
+import { useWeb3 } from "@/hooks/useWeb3"
 import { Button } from "@/components/ui/button"
-import { Loader2, ExternalLink, AlertTriangle } from "lucide-react"
+import { Wallet, Copy, ExternalLink, LogOut } from "lucide-react"
+import { motion } from "framer-motion"
+import { useToast } from "@/hooks/use-toast"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export function WalletConnect() {
-  const { account, isConnected, isConnecting, connect, disconnect, isCorrectChain, switchToApeChain } = useWeb3()
+  const { isConnected, address, connect, disconnect, connectors, isPending, formatAddress } = useWeb3()
+  const [copied, setCopied] = useState(false)
+  const { toast } = useToast()
 
-  // Форматируем адрес кошелька для отображения
-  const formatAddress = (address: string) => {
-    if (!address) return ""
-    return `${address.slice(0, 6)}...${address.slice(-4)}`
+  const copyAddress = () => {
+    if (address) {
+      navigator.clipboard.writeText(address)
+      setCopied(true)
+      toast({
+        title: "Address copied",
+        description: "Wallet address copied to clipboard",
+        duration: 2000,
+      })
+      setTimeout(() => setCopied(false), 2000)
+    }
   }
 
-  // Если пользователь подключен, но не в правильной сети
-  if (isConnected && !isCorrectChain) {
+  if (!isConnected) {
     return (
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center gap-2 text-yellow-500">
-          <AlertTriangle size={16} />
-          <span className="text-sm">Неправильная сеть</span>
-        </div>
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
         <Button
-          onClick={switchToApeChain}
-          variant="outline"
-          className="border-yellow-500 text-yellow-500 hover:bg-yellow-500/10"
+          onClick={() => connect({ connector: connectors[0] })}
+          className="relative overflow-hidden bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-orange-500/20"
+          disabled={isPending}
         >
-          Переключиться на ApeChain
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-amber-400/20"
+            animate={{
+              x: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+          {isPending ? (
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              className="mr-2 h-4 w-4"
+            >
+              <Wallet className="h-4 w-4" />
+            </motion.div>
+          ) : (
+            <Wallet className="mr-2 h-4 w-4" />
+          )}
+          <motion.span
+            animate={{ opacity: isPending ? [0.7, 1, 0.7] : 1 }}
+            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+          >
+            Connect Wallet
+          </motion.span>
         </Button>
-      </div>
+      </motion.div>
     )
   }
 
-  // Если пользователь подключен и в правильной сети
-  if (isConnected && account) {
-    return (
-      <div className="flex items-center gap-2">
-        <div className="h-2 w-2 rounded-full bg-green-500"></div>
-        <Button variant="outline" size="sm" className="flex items-center gap-2" onClick={disconnect}>
-          <span>{formatAddress(account)}</span>
-          <ExternalLink size={14} />
-        </Button>
-      </div>
-    )
-  }
-
-  // Если пользователь не подключен
   return (
-    <Button onClick={connect} disabled={isConnecting} className="flex items-center gap-2">
-      {isConnecting ? (
-        <>
-          <Loader2 size={16} className="animate-spin" />
-          <span>Подключение...</span>
-        </>
-      ) : (
-        <span>Подключить кошелек</span>
-      )}
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button className="relative overflow-hidden bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-orange-500/20">
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-amber-400/20"
+            animate={{
+              x: ["0%", "100%", "0%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+          <Wallet className="mr-2 h-4 w-4" />
+          {formatAddress(address)}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        className="w-56 bg-slate-900/95 backdrop-blur-sm border border-orange-500/50 text-orange-100"
+      >
+        <DropdownMenuItem onClick={copyAddress} className="cursor-pointer hover:bg-slate-800/50 focus:bg-slate-800/50">
+          <Copy className="mr-2 h-4 w-4" />
+          {copied ? "Copied!" : "Copy Address"}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => window.open(`https://apescan.io/address/${address}`, "_blank")}
+          className="cursor-pointer hover:bg-slate-800/50 focus:bg-slate-800/50"
+        >
+          <ExternalLink className="mr-2 h-4 w-4" />
+          View on Explorer
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => disconnect()}
+          className="cursor-pointer hover:bg-slate-800/50 focus:bg-slate-800/50"
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Disconnect
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

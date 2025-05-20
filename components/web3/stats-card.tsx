@@ -4,38 +4,92 @@ import type React from "react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { useMobile } from "@/hooks/use-mobile"
 
 interface StatsCardProps {
   title: string
   value: string | number
-  icon: React.ReactNode
   description?: string
-  color?: "default" | "orange" | "blue" | "green" | "purple" | "pink"
+  icon?: React.ReactNode
+  color?: "blue" | "pink" | "green" | "orange" | "purple" | "cyan"
+  loading?: boolean
 }
 
-export function StatsCard({ title, value, icon, description, color = "default" }: StatsCardProps) {
-  // Цвета для разных типов карточек
-  const colorStyles = {
-    default: "from-slate-900/20 to-slate-700/20 border-slate-500/30 text-slate-300",
-    orange: "from-orange-900/20 to-orange-700/20 border-orange-500/30 text-orange-300",
-    blue: "from-blue-900/20 to-blue-700/20 border-blue-500/30 text-blue-300",
-    green: "from-green-900/20 to-green-700/20 border-green-500/30 text-green-300",
-    purple: "from-purple-900/20 to-purple-700/20 border-purple-500/30 text-purple-300",
-    pink: "from-pink-900/20 to-pink-700/20 border-pink-500/30 text-pink-300",
+export function StatsCard({ title, value, description, icon, color = "blue", loading = false }: StatsCardProps) {
+  const isMobile = useMobile()
+
+  // Определяем цвета в зависимости от выбранного цвета
+  const colorClasses = {
+    blue: {
+      bg: "from-blue-900/40 to-indigo-900/40",
+      border: "border-blue-500/30",
+      text: "text-blue-400",
+      glow: "bg-blue-500/20",
+    },
+    pink: {
+      bg: "from-pink-900/40 to-rose-900/40",
+      border: "border-pink-500/30",
+      text: "text-pink-400",
+      glow: "bg-pink-500/20",
+    },
+    green: {
+      bg: "from-green-900/40 to-emerald-900/40",
+      border: "border-green-500/30",
+      text: "text-green-400",
+      glow: "bg-green-500/20",
+    },
+    orange: {
+      bg: "from-orange-900/40 to-amber-900/40",
+      border: "border-orange-500/30",
+      text: "text-orange-400",
+      glow: "bg-orange-500/20",
+    },
+    purple: {
+      bg: "from-purple-900/40 to-violet-900/40",
+      border: "border-purple-500/30",
+      text: "text-purple-400",
+      glow: "bg-purple-500/20",
+    },
+    cyan: {
+      bg: "from-cyan-900/40 to-sky-900/40",
+      border: "border-cyan-500/30",
+      text: "text-cyan-400",
+      glow: "bg-cyan-500/20",
+    },
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-      <Card className={`bg-gradient-to-br ${colorStyles[color]} border`}>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle className="text-sm font-medium">{title}</CardTitle>
-          <div className="opacity-70">{icon}</div>
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{value}</div>
-          {description && <p className="text-xs mt-1 opacity-70">{description}</p>}
-        </CardContent>
-      </Card>
-    </motion.div>
+    <Card
+      className={`overflow-hidden bg-gradient-to-br ${colorClasses[color].bg} border ${
+        colorClasses[color].border
+      } backdrop-blur-sm relative`}
+    >
+      {/* Animated glow effect */}
+      <motion.div
+        className={`absolute inset-0 rounded-xl ${colorClasses[color].glow} blur-xl`}
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+      />
+
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm font-medium text-slate-300 flex items-center">
+          {icon && <span className="mr-2">{icon}</span>}
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {loading ? (
+          <div className="animate-pulse h-8 bg-slate-700/50 rounded-md w-3/4"></div>
+        ) : (
+          <>
+            <div className={`text-2xl font-bold ${colorClasses[color].text}`}>{value}</div>
+            {description && <p className="text-xs text-slate-400 mt-1">{description}</p>}
+          </>
+        )}
+      </CardContent>
+    </Card>
   )
 }

@@ -12,7 +12,9 @@ import { useEffect } from "react"
 // Import i18n
 import "@/lib/i18n"
 // Import Web3 provider
-import { Web3Provider } from "@/contexts/web3-context"
+import { WagmiProvider } from "wagmi"
+import { config } from "@/config/wagmi"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 // Initialize global error handling on client
 const initGlobalErrorHandling = () => {
@@ -22,6 +24,9 @@ const initGlobalErrorHandling = () => {
 }
 
 const inter = Inter({ subsets: ["latin"] })
+
+// Create a client for React Query
+const queryClient = new QueryClient()
 
 export default function ClientLayout({
   children,
@@ -46,22 +51,26 @@ export default function ClientLayout({
   }, [])
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
-      <Web3Provider>
-        <ErrorBoundary>
-          <div className={inter.className}>
-            {children}
-            <Toaster />
-            <BuildErrorDisplay />
-            <SocialSidebar />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `(${initGlobalErrorHandling.toString()})();`,
-              }}
-            />
-          </div>
-        </ErrorBoundary>
-      </Web3Provider>
-    </ThemeProvider>
+    <>
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <ErrorBoundary>
+              <div className={inter.className}>
+                {children}
+                <Toaster />
+                <BuildErrorDisplay />
+                <SocialSidebar />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `(${initGlobalErrorHandling.toString()})();`,
+                  }}
+                />
+              </div>
+            </ErrorBoundary>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </ThemeProvider>
+    </>
   )
 }

@@ -1,84 +1,91 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import { motion } from "framer-motion"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { type NFT, determineRarity } from "@/hooks/useNFTs"
+import { Flame, Lock } from "lucide-react"
+import Image from "next/image"
+import { useMobile } from "@/hooks/use-mobile"
+import type { NFT } from "@/types/nft"
 
-// Цвета для разных редкостей
-const rarityColors: Record<string, string> = {
-  Common: "bg-gray-200 text-gray-800",
-  Uncommon: "bg-green-200 text-green-800",
-  Rare: "bg-blue-200 text-blue-800",
-  Epic: "bg-purple-200 text-purple-800",
-  Legendary: "bg-yellow-200 text-yellow-800",
-  Mythic: "bg-red-200 text-red-800",
+interface NFTCardProps {
+  nft: NFT
+  selectable?: boolean
+  onClick?: () => void
 }
 
-// Градиенты для фона карточек
-const rarityGradients: Record<string, string> = {
-  Common: "bg-gradient-to-br from-gray-100 to-gray-300",
-  Uncommon: "bg-gradient-to-br from-green-100 to-green-300",
-  Rare: "bg-gradient-to-br from-blue-100 to-blue-300",
-  Epic: "bg-gradient-to-br from-purple-100 to-purple-300",
-  Legendary: "bg-gradient-to-br from-yellow-100 to-yellow-300",
-  Mythic: "bg-gradient-to-br from-red-100 to-red-300",
-}
+export function NFTCard({ nft, selectable = false, onClick }: NFTCardProps) {
+  // Rarity colors
+  const rarityColors = {
+    Common: "bg-slate-500",
+    Uncommon: "bg-green-500",
+    Rare: "bg-blue-500",
+    Epic: "bg-purple-500",
+    Legendary: "bg-orange-500",
+    Mythic: "bg-pink-500",
+  }
 
-export function NFTCard({ nft }: { nft: NFT }) {
-  const [flipped, setFlipped] = useState(false)
-
-  // Определяем редкость NFT
-  const rarity = determineRarity(nft)
-
-  // Получаем цвет и градиент для редкости
-  const rarityColor = rarityColors[rarity] || rarityColors.Common
-  const rarityGradient = rarityGradients[rarity] || rarityGradients.Common
+  const isMobile = useMobile()
 
   return (
-    <div className="perspective-1000 cursor-pointer" onClick={() => setFlipped(!flipped)}>
-      <div
-        className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${flipped ? "rotate-y-180" : ""}`}
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* Передняя сторона карточки */}
-        <Card
-          className={`absolute w-full h-full backface-hidden ${rarityGradient} border-2 ${flipped ? "invisible" : "visible"}`}
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          <CardContent className="p-4 flex flex-col items-center">
-            <div className="relative w-full aspect-square mb-4 rounded-lg overflow-hidden">
-              <Image src={nft.image || "/placeholder.svg"} alt={nft.name} fill className="object-cover" />
-            </div>
-            <div className="flex flex-col items-center gap-2 w-full">
-              <h3 className="font-bold text-lg">{nft.name}</h3>
-              <Badge className={rarityColor}>{rarity}</Badge>
-            </div>
-          </CardContent>
-        </Card>
+    <motion.div
+      whileHover={selectable ? { scale: 1.02 } : {}}
+      className={`relative ${selectable ? "cursor-pointer" : ""}`}
+      onClick={onClick}
+    >
+      <Card className="overflow-hidden bg-black/40 border border-pink-500/30 backdrop-blur-sm">
+        <div className="relative aspect-square overflow-hidden">
+          {/* NFT image */}
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 to-pink-900">
+            <motion.div
+              animate={{
+                y: [0, -5, 0],
+                rotate: [0, 2, 0, -2, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+              }}
+              className="w-full h-full flex items-center justify-center p-4"
+            >
+              <Image
+                src={nft.image || "/placeholder.svg"}
+                alt={`${nft.name} - ${nft.rarity} NFT`}
+                width={288}
+                height={288}
+                className="object-contain"
+              />
+            </motion.div>
+          </div>
 
-        {/* Задняя сторона карточки */}
-        <Card
-          className={`absolute w-full h-full backface-hidden ${rarityGradient} border-2 ${flipped ? "visible" : "invisible"}`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          <CardContent className="p-4 flex flex-col gap-2">
-            <h3 className="font-bold text-lg text-center">{nft.name}</h3>
-            <p className="text-sm text-gray-700">{nft.description}</p>
-            <div className="mt-2">
-              <h4 className="font-semibold text-sm mb-1">Атрибуты:</h4>
-              <div className="grid grid-cols-2 gap-1">
-                {nft.attributes.map((attr, index) => (
-                  <div key={index} className="text-xs bg-white/50 rounded p-1">
-                    <span className="font-medium">{attr.trait_type}:</span> {attr.value}
-                  </div>
-                ))}
-              </div>
+          {/* Frozen overlay */}
+          {nft.frozen && (
+            <div className="absolute inset-0 bg-blue-900/50 flex items-center justify-center backdrop-blur-sm">
+              <Lock className="h-10 w-10 text-blue-300" />
             </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+          )}
+
+          {/* Rarity badge */}
+          <Badge className={`absolute top-3 right-3 text-sm ${rarityColors[nft.rarity]}`}>{nft.rarity}</Badge>
+
+          {/* Reward indicator */}
+          {nft.rewardBalance > 0 && (
+            <div className="absolute bottom-3 right-3 bg-black/60 rounded-full px-3 py-1.5 text-sm flex items-center">
+              <Flame className="h-4 w-4 text-orange-500 mr-1.5" />
+              <span className="text-orange-300">{nft.rewardBalance}</span>
+            </div>
+          )}
+        </div>
+
+        <CardContent className={`p-${isMobile ? "3" : "4"}`}>
+          <h3 className={`font-medium ${isMobile ? "text-base" : "text-lg"} text-pink-200 truncate`}>{nft.name}</h3>
+          <p className="text-sm text-pink-300/70">ID: {nft.id}</p>
+        </CardContent>
+
+        <CardFooter className={`p-${isMobile ? "3" : "4"} pt-0 flex justify-between`}>
+          <div className="text-sm text-pink-300/70">{nft.frozen ? "Frozen" : "Active"}</div>
+        </CardFooter>
+      </Card>
+    </motion.div>
   )
 }
